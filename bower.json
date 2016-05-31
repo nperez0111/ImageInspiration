@@ -4,7 +4,8 @@
   "private": true,
   "dependencies": {
     "jQuery": "~1.11.1",
-    "normalize-scss": "~3.0.1"
+    "normalize-scss": "~3.0.1",
+    "jquery": "^2.2.4"
   },
   "overrides": {
     "page": {
