@@ -1,10 +1,12 @@
+var local = require( './LocalStorage.js' );
+var $ = require( 'jquery' );
 module.exports = {
     cache: {},
     localStore: false,
     getCache: function ( prop, func, isPromise = false, isNotJSON = false ) {
-        if ( prop in this.cache || ( localStorage && localStorage.getItem( prop ) ) ) {
-            if ( localStorage && localStorage.getItem( prop ) ) {
-                this.cache[ prop ] = isNotJSON ? localStorage.getItem( prop ) : JSON.parse( localStorage.getItem( prop ) );
+        if ( prop in this.cache || ( local.supportsLocalStorage() && local.getItem( prop ) ) ) {
+            if ( local.supportsLocalStorage() && local.getItem( prop ) ) {
+                this.cache[ prop ] = isNotJSON ? local.getItem( prop ) : JSON.parse( local.getItem( prop ) );
             }
             return isPromise ? Promise.resolve( this.cache[ prop ] ) : this.cache[ prop ];
         }
@@ -14,8 +16,8 @@ module.exports = {
         }
         return func.call( this ).then( ( obj ) => {
             this.cache[ prop ] = isNotJSON ? obj : JSON.parse( obj );
-            if ( this.localStore && localStorage ) {
-                localStorage.setItem( prop, obj );
+            if ( local.supportsLocalStorage() && this.localStore ) {
+                local.setItem( prop, obj );
             }
             return this.cache[ prop ];
         }, ( err ) => {
