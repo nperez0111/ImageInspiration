@@ -1,8 +1,8 @@
 bower_components
 node_modules
+dist
 .tmp
 *.log
 logs
 .DS_Store
 .sass-cache
-dist
