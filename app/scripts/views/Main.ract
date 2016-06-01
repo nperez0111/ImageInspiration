@@ -1,1 +1,2 @@
-<Modal id="test">Test</Modal>
+<input type="search" value="{{query}}"><button class="btn btn-primary" on-click="search">Search</button>
+{{display}}
