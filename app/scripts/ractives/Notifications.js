@@ -1,4 +1,3 @@
-var $ = require( "jquery" );
 require( "remarkable-bootstrap-notify" );
 module.exports = {
     clearNotifications: function () {

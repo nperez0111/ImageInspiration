@@ -1,5 +1,6 @@
 'use strict';
 require( './components/Modal.js' );
-var Base = require( './ractives/Base.js' );
-window.Base = Base;
-window.obj = new Base();
+window.$ = require( 'jquery' );
+window.jQuery = window.$;
+var Main = require( './views/Main.js' );
+window.Main = new Main( { el: '.hook' } );

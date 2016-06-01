@@ -1,5 +1,4 @@
 var local = require( './LocalStorage.js' );
-var $ = require( 'jquery' );
 module.exports = {
     cache: {},
     localStore: false,

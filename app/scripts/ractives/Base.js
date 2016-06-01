@@ -1,5 +1,4 @@
-var Ractive = require( 'ractive/ractive.runtime' ),
-    $ = require( 'jquery' );
+var Ractive = require( 'ractive/ractive.runtime' );
 
 module.exports = Ractive.extend( [ require( './Networking.js' ), require( './Arrays.js' ), require( './Utilities.js' ), require( './Objects.js' ), require( './GoogleSearch.js' ), require( './Notifications.js' ), require( './Logging.js' ) ].reduce( ( first, next ) => {
     return $.extend( first, next );
