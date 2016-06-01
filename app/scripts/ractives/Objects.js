@@ -27,4 +27,7 @@ module.exports = {
         }
         return obj[ prop ];
     },
+    keys: function ( obj ) {
+        return Object.keys( obj );
+    }
 };
