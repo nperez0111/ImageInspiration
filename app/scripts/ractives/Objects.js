@@ -12,10 +12,10 @@ module.exports = {
         return ret;
     },
     iterateOver: function ( obj, doThat ) {
-        Object.keys( obj ).forEach( function ( cur, i ) {
+        this.keys( obj ).forEach( function ( cur, i ) {
             doThat( obj[ cur ], cur, obj );
         } );
-        return Object.keys( obj );
+        return this.keys( obj );
     },
     pick: function ( obj, prop ) {
         if ( Array.isArray( prop ) ) {
