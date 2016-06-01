@@ -26,21 +26,19 @@ module.exports = {
         } );
 
     },
-    url: "",
     sendToDataBase: function ( obj, urlEx ) {
         obj = $.extend( {
             type: "GET",
             dataType: "json",
             url: this.url + ( urlEx || "" )
         }, obj );
-        var that = this;
         return new Promise( ( resolve, reject ) => {
             $.ajax( obj ).then( ( r ) => {
-                resolve( ( r.message ) );
+                resolve( ( r ) );
             }, ( err ) => {
                 console.group( "DataBase Error, '%s'ing '%s'", obj.type.toLowerCase(), urlEx );
-                that.logger( err.responseText ? err.responseText : err, true );
-                that.logger( obj, true );
+                this.logger( JSON.parse( err ) );
+                this.logger( obj, true );
                 console.groupEnd();
                 reject( err );
             } );
