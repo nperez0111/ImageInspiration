@@ -217,7 +217,7 @@ module.exports = function ( grunt ) {
         // Build the application using Browserify
         browserify: {
             options: {
-                transform: [ 'ractify', 'debowerify' ],
+                transform: [ 'ractify', 'debowerify', 'babelify' ],
                 watch: false,
                 browserifyOptions: {
                     debug: true
