@@ -2,6 +2,7 @@
   "name": "image-inspiration",
   "version": "0.0.0",
   "dependencies": {
+    "debowerify": "^1.4.1",
     "ractive": "^0.6.0"
   },
   "devDependencies": {
