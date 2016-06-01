@@ -13,17 +13,17 @@
         "page": {
             "main": "index.js"
         },
-        "jQuery": {
+        "jquery": {
             "main": "dist/jquery.min.js"
         },
         "bootstrap-sass": {
             "main": [
-        "assets/stylesheets/_bootstrap.scss",
-        "assets/javascripts/bootstrap.js",
-        "assets/fonts/bootstrap/*",
-        "assets/javascripts/bootstrap/alert.js",
-        "assets/javascripts/bootstrap/modal.js"
-      ]
+                "assets/stylesheets/_bootstrap.scss",
+                "assets/javascripts/bootstrap.js",
+                "assets/fonts/bootstrap/*",
+                "assets/javascripts/bootstrap/alert.js",
+                "assets/javascripts/bootstrap/modal.js"
+            ]
         },
         "remarkable-bootstrap-notify": {
             "main": "mousetrap.min.js"
