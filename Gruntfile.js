@@ -39,7 +39,7 @@ module.exports = function ( grunt ) {
                 tasks: [ 'test:watch' ]
             },
             scripts: {
-                files: [ '<%= config.app %>/scripts/**/*.js' ],
+                files: [ '<%= config.app %>/scripts/**/*.js', '<%= config.app %>/scripts/**/*.ract' ],
                 tasks: [ 'browserify:dist' ]
             },
             gruntfile: {
