@@ -37,7 +37,7 @@ module.exports = {
         return this.notify( '<span class="glyphicon glyphicon-info-sign"></span> ' + title, message, time, "info" );
     },
     notifyWarning: function ( title, message, time ) {
-        return this.notify( '<span class="glyphicon glyphicon-warning-sign"></span> ' + title, message, time, "warning" );
+        return this.notify( '<span class="glyphicon glyphicon-exclamation-sign"></span> ' + title, message, time, "warning" );
     },
     notifications: [],
 };
