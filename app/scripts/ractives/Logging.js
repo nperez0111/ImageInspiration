@@ -7,6 +7,10 @@ module.exports = {
         console.warn( a );
         return a;
     },
+    trace: function ( a ) {
+        console.trace( a );
+        return a;
+    },
     logger: function ( a, warning ) {
         if ( /unminified/.test( function () { /*unminified*/ } ) ) {
             if ( warning ) {
