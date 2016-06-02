@@ -1,0 +1,6 @@
+<div class='imgWrap'>
+	<a href="{{ref}}">
+		<img src="{{url}}" alt="{{alt}}" width="{{width}}" height="{{height}}" />
+		<span>{{dispLink}}</span>
+	</a>
+</div>

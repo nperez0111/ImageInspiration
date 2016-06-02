@@ -6,4 +6,6 @@
       </span>
     </div>
 </div>
-{{display}}
+{{#each images:i}}
+	<Image ctx="{{images[i]}}" titles="{{titles[i]}}">
+{{/each}}
