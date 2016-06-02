@@ -3,27 +3,42 @@ var Base = require( './../ractives/Base.js' );
 module.exports = Base.extend( {
     template: require( './Main.ract' ).template,
     oninit: function () {
-        /*this.observe( "query", ( newV, oldV ) => {
-            if ( !newV ) {
-                return;
-            }
-
-            this.getImage( newV ).then( this.logger, this.logger ).then( cur => {
-                this.set( "display", cur );
-            } );
-        } );*/
         this.on( "search", ( ev ) => {
-            this.notify( "It Works", this.get( 'query' ) );
-            /*this.getImage( this.get('query') ).then( this.logger, this.logger ).then( cur => {
-                this.set( "display", cur );
-            } );*/
-            //$('body').removeClass('stillCenter');
+            this.getImage( this.get( 'query' ) ).then( this.logger, this.logger ).then( cur => {
+                this.set( "response", cur );
+                return cur;
+            } ).then( this.removeCenter );
+
         } );
+    },
+    components: {
+        Image: require( './../components/Images.js' ),
     },
     data: function () {
         return {
             query: "",
-            display: ""
+            response: {}
         }
+    },
+    computed: {
+        images: {
+            get: function () {
+                return this.get( "response.items" ).map( ( cur ) => {
+                    return $.extend( { link: cur.link }, cur.image );
+                } );
+            }
+        },
+        titles: {
+            get: function () {
+                return this.get( "response.items" ).map( cur => {
+                    return $.extend( this.pick( cur.image, [ "contextLink" ] ), this.pick( cur, [ "htmlTitle", "displayLink" ] ) );
+                } );
+            }
+        }
+    },
+    removeCenter: function ( a ) {
+        //on search move search to top
+        $( 'body' ).removeClass( 'stillCenter' );
+        return a;
     }
 } );

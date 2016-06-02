@@ -8,6 +8,4 @@ var Modal = Ractive.extend( {
     isolated: true
 } );
 
-Ractive.components.Modal = Modal;
-
 module.exports = Modal;
