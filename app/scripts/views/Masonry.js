@@ -1,49 +1,74 @@
-var Bricks = require( 'bricks.js' );
+var Mason = require( 'masonry-layout' ),
+    imagesLoaded = require( 'imagesloaded' );
 module.exports = {
     packer: null,
     options: {
-        packed: 'data-packed',
-        sizes: [ {
-            columns: 2,
-            gutter: 10
-        }, {
-            mq: '768px',
-            columns: 3,
-            gutter: 25
-        }, {
-            mq: '1024px',
-            columns: 4,
-            gutter: 50
-        } ]
+        columnWidth: '.grid-sizer',
+        percentPosition: true
     },
     pack: function () {
         if ( this.packer ) {
-            this.packer.pack();
+            this.packer.layout();
             return this;
         }
         console.trace( "Called 'pack' before packer intitalized!" );
         return false;
     },
-    update: function () {
+    stamp: function ( el ) {
         if ( this.packer ) {
-            this.packer.update();
+            this.packer.stamp( el );
             return this;
         }
-        console.trace( "Called 'update' before packer intitalized!" );
+        console.trace( "Called 'stamp' before packer intitalized!" );
         return false;
     },
-    init: function ( selector ) {
-        this.packer = new Bricks( Object.assign( {
-            selector: selector
-        }, this.options ) );
+    unStamp: function ( el ) {
+        if ( this.packer ) {
+            this.packer.unStamp( el );
+            return this;
+        }
+        console.trace( "Called 'unStamp' before packer intitalized!" );
+        return false;
+    },
+    append: function ( el ) {
+        if ( this.packer ) {
+
+            this.packer.appended( el );
+        }
+        console.trace( "Called 'append' before packer intitalized!" );
         return this;
     },
-    on: function ( which, handler ) {
+    init: function ( selector, itemSelector ) {
         if ( this.packer ) {
-            this.packer.on( which, handler );
+            return;
+        }
+        this.packer = new Mason( selector, Object.assign( {
+            itemSelector: itemSelector
+        }, this.options ) );
+
+        $( itemSelector ).hide();
+        imagesLoaded( selector ).on( 'progress', ( imageLoad, image ) => {
+            var $item = $( image.img ).parents( itemSelector );
+            // un-hide item
+            $item.show();
+            // masonry does its thing
+            this.packer.appended( $item );
+            //this.packer.layout();
+        } );
+
+        return this;
+    },
+    on: function ( handler ) {
+        if ( this.packer ) {
+            this.packer.on( 'layoutComplete', handler );
             return this;
         }
-        console.trace( "Set '" + which + "' before packer intitalized!" );
+        console.trace( "Set handler before packer intitalized!" );
         return false;
+    },
+    destroy: function () {
+        this.packer.destroy();
+        this.packer = null;
+        return true;
     }
 };

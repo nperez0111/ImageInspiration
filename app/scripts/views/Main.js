@@ -1,5 +1,5 @@
 var Base = require( './../ractives/Base.js' );
-
+var Mason = require( './Masonry.js' );
 module.exports = Base.extend( {
     template: require( './Main.ract' ).template,
     oninit: function () {
@@ -10,6 +10,11 @@ module.exports = Base.extend( {
             } ).then( this.removeCenter );
 
         } );
+        this.observe( "images", ( newV, oldV ) => {
+            if ( newV ) {
+                this.masonry();
+            }
+        }, { defer: true } );
     },
     components: {
         Image: require( './../components/Images.js' ),
@@ -40,5 +45,11 @@ module.exports = Base.extend( {
         //on search move search to top
         $( 'body' ).removeClass( 'stillCenter' );
         return a;
+    },
+    masonry: function ( a ) {
+        return Mason.init( ".result", ".imgWrap" );
+    },
+    killMasonry: function () {
+        Mason.destroy();
     }
 } );
