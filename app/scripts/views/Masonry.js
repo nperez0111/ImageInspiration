@@ -46,14 +46,14 @@ module.exports = {
             itemSelector: itemSelector
         }, this.options ) );
 
-        $( itemSelector ).hide();
+        //$( itemSelector ).hide();
         imagesLoaded( selector ).on( 'progress', ( imageLoad, image ) => {
             var $item = $( image.img ).parents( itemSelector );
             // un-hide item
-            $item.show();
+            //$item.show();
             // masonry does its thing
-            this.packer.appended( $item );
-            //this.packer.layout();
+            //this.packer.appended( $item );
+            this.packer.layout();
         } );
 
         return this;
