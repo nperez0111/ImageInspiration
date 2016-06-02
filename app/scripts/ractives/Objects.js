@@ -20,8 +20,8 @@ module.exports = {
     pick: function ( obj, prop ) {
         if ( Array.isArray( prop ) ) {
             var ret = {};
-            prop.forEach( ( cur, i, arr ) => {
-                ret[ prop ] = obj[ prop ];
+            prop.forEach( ( cur ) => {
+                ret[ cur ] = obj[ cur ];
             } );
             return ret;
         }
