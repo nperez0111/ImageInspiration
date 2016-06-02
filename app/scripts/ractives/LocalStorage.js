@@ -24,5 +24,10 @@ module.exports = {
             return JSON.parse( localStorage.getItem( key ) );
         }
         return null;
+    },
+    clear: function () {
+        if ( this.supportsLocalStorage() ) {
+            localStorage.clear();
+        }
     }
 };
