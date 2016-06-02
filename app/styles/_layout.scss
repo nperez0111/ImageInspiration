@@ -8,9 +8,10 @@ html,
 body {
     height: 100%;
 }
-
 body {
-    align-items: center;
+    &.stillCenter{
+        align-items: center;
+    }
     background: #fafafa;
     color: #333;
     display: flex;
@@ -23,4 +24,12 @@ body {
     color: #000;
     margin: 0.2em 0;
     padding: 0.2em 0;
+}
+
+.noFloat{
+    float: none;
+}
+
+.center{
+    margin: 0 auto;
 }

@@ -17,6 +17,7 @@ module.exports = Base.extend( {
             /*this.getImage( this.get('query') ).then( this.logger, this.logger ).then( cur => {
                 this.set( "display", cur );
             } );*/
+            //$('body').removeClass('stillCenter');
         } );
     },
     data: function () {

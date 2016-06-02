@@ -1,2 +1,9 @@
-<input type="search" value="{{query}}"><button class="btn btn-primary" on-click="search">Search</button>
+ <div class="col-md-6 noFloat center">
+     <div class="input-group">
+      <input type="search" class="form-control" placeholder="Search for..." value="{{query}}">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" on-click="search">Search</button>
+      </span>
+    </div>
+</div>
 {{display}}
