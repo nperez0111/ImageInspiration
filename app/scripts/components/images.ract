@@ -1,6 +1,6 @@
-<div class='imgWrap' width="{{width}}" height="{{height}}">
+<div class='imgWrap'>
 	<div class="hovereffect">
-		<img src="{{url}}" alt="{{alt}}" width="{{width}}" height="{{height}}" />
+		<img src="{{url}}" alt="{{alt}}"/>
             <div class="overlay">
                 <a href="{{ref}}">
                 	<h2>{{dispLink}}</h2>

@@ -8,14 +8,18 @@ html,
 body {
     height: 100%;
 }
+
 body {
-    &.stillCenter{
+    &.stillCenter {
         align-items: center;
     }
     background: #fafafa;
     color: #333;
     display: flex;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
     justify-content: center;
 }
 
@@ -26,10 +30,91 @@ body {
     padding: 0.2em 0;
 }
 
-.noFloat{
+.noFloat {
     float: none;
 }
 
-.center{
+.center {
     margin: 0 auto;
+}
+
+.hook,
+.result {
+    width: 100%;
+}
+
+.imgWrap {
+    width: 50%;
+}
+
+.hovereffect {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    cursor: default;
+    &:hover .overlay,
+    &:hover h2 {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    &:hover h2 {
+        -webkit-transition-delay: 0.05s;
+        transition-delay: 0.05s;
+    }
+    .overlay {
+        width: 100%;
+        position: absolute;
+        overflow: hidden;
+        left: 0;
+        top: auto;
+        bottom: 0;
+        padding: 1em;
+        height: 4.75em;
+        background: #444;
+        color: #3c4a50;
+        -webkit-transition: -webkit-transform 0.35s;
+        transition: transform 0.35s;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+    img {
+        position: relative;
+        -webkit-transition: -webkit-transform 0.35s;
+        transition: transform 0.35s;
+        width: 100%;
+        &:hover img {
+            -webkit-transform: translate3d(0, -10%, 0);
+            transform: translate3d(0, -10%, 0);
+        }
+    }
+    h2 {
+        text-transform: uppercase;
+        color: #fff;
+        text-align: center;
+        position: relative;
+        font-size: 17px;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.6);
+        float: left;
+        margin: 0px;
+        display: inline-block;
+        -webkit-transition: -webkit-transform 0.35s;
+        transition: transform 0.35s;
+        -webkit-transform: translate3d(0, 200%, 0);
+        transform: translate3d(0, 200%, 0);
+    }
+    a.info {
+        display: inline-block;
+        text-decoration: none;
+        padding: 7px 14px;
+        text-transform: uppercase;
+        color: #fff;
+        border: 1px solid #fff;
+        margin: 50px 0 0 0;
+        background-color: transparent;
+        &:hover {
+            box-shadow: 0 0 5px #fff;
+        }
+    }
 }
