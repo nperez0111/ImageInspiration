@@ -12,9 +12,11 @@ module.exports = Base.extend( {
         } );
         this.observe( "images", ( newV, oldV ) => {
             if ( newV ) {
-                this.masonry();
+                this.set( 'mason', this.masonry() );
             }
-        }, { defer: true } );
+        }, {
+            defer: true
+        } );
     },
     components: {
         Image: require( './../components/Images.js' ),
@@ -29,7 +31,9 @@ module.exports = Base.extend( {
         images: {
             get: function () {
                 return this.get( "response.items" ).map( ( cur ) => {
-                    return $.extend( { link: cur.link }, cur.image );
+                    return $.extend( {
+                        link: cur.link
+                    }, cur.image );
                 } );
             }
         },

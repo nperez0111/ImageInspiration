@@ -43,8 +43,8 @@ body {
     width: 100%;
 }
 
-.imgWrap {
-    width: 50%;
+.noPad {
+    padding: 0 !important;
 }
 
 .hovereffect {
@@ -53,6 +53,7 @@ body {
     position: relative;
     text-align: center;
     cursor: default;
+    width:100%;
     &:hover .overlay,
     &:hover h2 {
         -webkit-transform: translate3d(0, 0, 0);

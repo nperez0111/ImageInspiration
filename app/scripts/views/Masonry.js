@@ -3,8 +3,8 @@ var Mason = require( 'masonry-layout' ),
 module.exports = {
     packer: null,
     options: {
-        columnWidth: '.grid-sizer',
-        percentPosition: true
+        percentPosition: true,
+
     },
     pack: function () {
         if ( this.packer ) {
@@ -46,13 +46,7 @@ module.exports = {
             itemSelector: itemSelector
         }, this.options ) );
 
-        //$( itemSelector ).hide();
         imagesLoaded( selector ).on( 'progress', ( imageLoad, image ) => {
-            var $item = $( image.img ).parents( itemSelector );
-            // un-hide item
-            //$item.show();
-            // masonry does its thing
-            //this.packer.appended( $item );
             this.packer.layout();
         } );
 

@@ -6,10 +6,10 @@
       </span>
     </div>
 </div>
-<div class="result">
-	<div class="grid-sizer imgWrap"></div>
 
+<div class="result">
 	{{#each images:i}}
 		<Image ctx="{{images[i]}}" titles="{{titles[i]}}" />
 	{{/each}}
+	
 </div>
