@@ -4,7 +4,6 @@ module.exports = {
     packer: null,
     options: {
         percentPosition: true,
-
     },
     pack: function () {
         if ( this.packer ) {

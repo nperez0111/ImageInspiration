@@ -53,14 +53,12 @@ body {
     position: relative;
     text-align: center;
     cursor: default;
-    width:100%;
+    width: 100%;
     &:hover .overlay,
     &:hover h2 {
-        -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
     }
     &:hover h2 {
-        -webkit-transition-delay: 0.05s;
         transition-delay: 0.05s;
     }
     .overlay {
@@ -74,10 +72,11 @@ body {
         height: 4.75em;
         background: #444;
         color: #3c4a50;
-        -webkit-transition: -webkit-transform 0.35s;
         transition: transform 0.35s;
-        -webkit-transform: translate3d(0, 100%, 0);
         transform: translate3d(0, 100%, 0);
+        &.show {
+            transform: translate3d(0, 0, 0);
+        }
     }
     img {
         position: relative;
@@ -104,18 +103,5 @@ body {
         transition: transform 0.35s;
         -webkit-transform: translate3d(0, 200%, 0);
         transform: translate3d(0, 200%, 0);
-    }
-    a.info {
-        display: inline-block;
-        text-decoration: none;
-        padding: 7px 14px;
-        text-transform: uppercase;
-        color: #fff;
-        border: 1px solid #fff;
-        margin: 50px 0 0 0;
-        background-color: transparent;
-        &:hover {
-            box-shadow: 0 0 5px #fff;
-        }
     }
 }
