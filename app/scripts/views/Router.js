@@ -29,9 +29,9 @@ module.exports = {
         page.base( '/' );
         page( '/', route );
         page( '', route );
-        page( /unminified/.test( function () { /*unminified*/ } ) ? {
+        page( {
             hashbang: true
-        } : undefined );
+        } );
     },
     to: function ( route ) {
         page( route );
