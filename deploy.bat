@@ -1,3 +1,2 @@
 @echo off
-grunt build
-bash deploy.sh 
+grunt build && bash deploy.sh 
