@@ -4,15 +4,22 @@ module.exports = Base.extend( {
     template: require( './Main.ract' ).template,
     oninit: function () {
         this.on( "search", ( ev ) => {
-            this.getImage( this.get( 'query' ) ).then( this.logger, this.logger ).then( cur => {
-                this.set( "response", cur );
-                return cur;
-            } ).then( this.removeCenter );
+            this.set( 'response', null ).then( () => {
+                this.getImage( this.get( 'query' ) ).then( this.logger, this.logger ).then( cur => {
+                    this.set( "response", cur );
+                    return cur;
+                } ).then( this.removeCenter );
+            } );
 
         } );
+
         this.observe( "images", ( newV, oldV ) => {
             if ( newV ) {
+                if ( this.get( 'masonF' ) ) {
+                    this.killMasonry();
+                }
                 this.set( 'mason', this.masonry() );
+                this.set( 'masonF', true );
             }
         }, {
             defer: true
