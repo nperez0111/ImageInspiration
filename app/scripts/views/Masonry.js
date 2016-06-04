@@ -2,6 +2,7 @@ var Mason = require( 'masonry-layout' ),
     imagesLoaded = require( 'imagesloaded' );
 module.exports = {
     packer: null,
+    instance: null,
     options: {
         percentPosition: true,
     },
@@ -44,12 +45,24 @@ module.exports = {
         this.packer = new Mason( selector, Object.assign( {
             itemSelector: itemSelector
         }, this.options ) );
-
-        imagesLoaded( selector ).on( 'progress', ( imageLoad, image ) => {
+        var imageLoded = imagesLoaded( selector );
+        imageLoded.on( 'progress', ( imageLoad, image ) => {
             this.packer.layout();
+        } );
+        imageLoded.on( 'fail', ( instance, image ) => {
+            //contains the index of the failed image
+            var failedArr = instance.images.map( ( cur, i ) => {
+                return !cur.isLoaded ? i : undefined
+            } ).filter( ( cur ) => {
+                return cur !== undefined;
+            } );
+            failedArr.forEach( this.failures );
         } );
 
         return this;
+    },
+    failures: function ( cur ) {
+        console.log( cur );
     },
     on: function ( handler ) {
         if ( this.packer ) {
@@ -63,5 +76,13 @@ module.exports = {
         this.packer.destroy();
         this.packer = null;
         return true;
+    },
+    refire: function ( event ) {
+        if ( this.instance ) {
+            this.instance.fire( event );
+            return this;
+        }
+        console.trace( "Called fire event before instance intitalized!" );
+        return false;
     }
 };

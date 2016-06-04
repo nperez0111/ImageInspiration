@@ -5,11 +5,11 @@ module.exports = Base.extend( {
     oninit: function () {
         this.on( "search", ( ev ) => {
             this.set( 'response', null ).then( () => {
-                this.getImage( this.get( 'query' ) ).then( this.logger, this.logger ).then( cur => {
-                    this.set( "response", cur );
-                    return cur;
-                } ).then( this.removeCenter );
-            } );
+                return this.getImage( this.get( 'query' ) ).then( this.logger, this.logger );
+            } ).then( cur => {
+                this.set( "response", cur );
+                return cur;
+            } ).then( this.removeCenter );
 
         } );
 
@@ -24,6 +24,8 @@ module.exports = Base.extend( {
         }, {
             defer: true
         } );
+        this.passInstanceToMasonry();
+        this.ifFail();
     },
     components: {
         Image: require( './../components/Images.js' ),
@@ -62,5 +64,13 @@ module.exports = Base.extend( {
     },
     killMasonry: function () {
         Mason.destroy();
+    },
+    passInstanceToMasonry: function () {
+        Mason.instance = this;
+    },
+    ifFail: function () {
+        Mason.failures = cur => {
+            this.set( 'response.items.' + cur + '.link', this.set( 'response.items.' + cur + '.image.thumbnailLink' ) );
+        }
     }
 } );
