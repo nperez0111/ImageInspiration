@@ -32,11 +32,11 @@ module.exports = {
     },
     append: function ( el ) {
         if ( this.packer ) {
-
             this.packer.appended( el );
+            return this;
         }
         console.trace( "Called 'append' before packer intitalized!" );
-        return this;
+        return false;
     },
     init: function ( selector, itemSelector ) {
         if ( this.packer ) {
@@ -56,13 +56,20 @@ module.exports = {
             } ).filter( ( cur ) => {
                 return cur !== undefined;
             } );
-            failedArr.forEach( this.failures );
+            failedArr.forEach( index => {
+                var failed = this.failures( index, instance.images[ index ].img );
+                if ( failed === true ) {
+                    this.pack();
+                } else {
+                    this.append( failed ).pack();
+                }
+            } );
         } );
 
         return this;
     },
-    failures: function ( cur ) {
-        console.log( cur );
+    failures: function ( index, image ) {
+        console.log( index, image );
     },
     on: function ( handler ) {
         if ( this.packer ) {
