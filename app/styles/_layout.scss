@@ -83,6 +83,7 @@ body {
         -webkit-transition: -webkit-transform 0.35s;
         transition: transform 0.35s;
         width: 100%;
+        min-height: 4.75em;
         &:hover img {
             -webkit-transform: translate3d(0, -10%, 0);
             transform: translate3d(0, -10%, 0);
