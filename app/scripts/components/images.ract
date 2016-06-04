@@ -5,7 +5,11 @@
            
             <div class="overlay">
                 <a href="{{ref}}" target="_blank">
-                	<h2>{{dispLink}}</h2>
+                	<h2><span class='glyphicon glyphicon-link'></span> {{dispLink}}
+                    {{#if isThumb}}
+                    <span class='glyphicon glyphicon-resize-full'></span>
+                    {{/if}}
+                    </h2>
                 </a>
             </div>
         </a>

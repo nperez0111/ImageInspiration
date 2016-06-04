@@ -1,5 +1,4 @@
 'use strict';
-//figure out how to display if the image is only a thumbnail
 var Ractive = require( 'ractive/ractive.runtime' );
 
 var Image = Ractive.extend( {
