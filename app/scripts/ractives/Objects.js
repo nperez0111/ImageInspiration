@@ -1,3 +1,5 @@
+var transformer = require( 'object-manip' );
+
 module.exports = {
     makeObj: function ( keys, values ) {
         var ret = {};
@@ -29,5 +31,6 @@ module.exports = {
     },
     keys: function ( obj ) {
         return Object.keys( obj );
-    }
+    },
+    manip: transformer
 };
