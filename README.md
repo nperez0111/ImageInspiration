@@ -1,5 +1,6 @@
 # Image Inspiration
 A small simple image search engine UI
+
 <a href="https://github.com/nperez0111/ImageInspiration"> <img src="screenshot.png" width="846"> </a>
 ## What is it?
 This is a simple search engine UI that I created. It uses Google Images API to retrieve results and display them in a nice masonry layout.The UI is completely decoupled from the back-end and is capable of having adaptors written to use other back-ends such as the Yahoo Image Search API.
